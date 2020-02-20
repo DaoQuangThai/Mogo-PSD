@@ -1,0 +1,1134 @@
+// --------------- VARIABLE ---------------- //
+$color-primary: #95e1d3;
+$color-secondary: #f38181;
+
+$color-gradient-yellow: #fce38a;
+$color-gradient-pink: #e68082;
+
+$color-dark: #333;
+$color-light-dark: #999;
+$color-border: #e5e5e5;
+
+$gradient-primary: #000;
+$gradient-secondary: #fff;
+
+$font-primary: "Roboto", sans-serif;
+$font-secondary: "Montserrat", sans-serif;
+$font-thrid: "Kaushan Script", cursive;
+
+// --------------- MEDIA QUERY MANAGER ---------------- //
+
+/*
+Break point: 
+- small: 600px
+- medium: 900px
+- large: 1200px
+- retina: mac user
+*/
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == small {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == medium {
+    @media only screen and (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == large {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == largest {
+    @media only screen and (min-width: 1920px) {
+      @content;
+    }
+  }
+
+  // @if $breakpoint == retina {
+  //   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  //     @content;
+  //   }
+  // }
+}
+// --------------- BASE SET-UP ---------------- //
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+
+  @include responsive(largest) {
+    font-size: 75%;
+  }
+
+  @include responsive(medium) {
+    font-size: 56.25%;
+  }
+
+  @include responsive(small) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: $font-primary;
+  color: $color-dark;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $color-dark;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+// --------------- OVERALL LAYOUT ---------------- //
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+// FLEX LAYOUT
+.flex-items-container {
+  display: flex;
+  justify-content: space-between;
+
+  @include responsive(small) {
+    flex-direction: column;
+  }
+}
+
+.flex-1-of-2 {
+  width: calc((100% - 3rem) / 2);
+}
+
+.flex-1-of-3 {
+  width: calc((100% - 6rem) / 3);
+
+  @include responsive(small) {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+// GRID LAYOUT
+.grid-1-of-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+  gap: 6rem;
+
+  @include responsive(medium) {
+    gap: 4rem;
+  }
+}
+
+.grid-1-of-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 6rem;
+
+  @include responsive(medium) {
+    gap: 4rem;
+  }
+}
+
+// --------------- REUSABLE COMPONETNS ---------------- //
+.heading {
+  text-align: center;
+  padding-top: 10rem;
+
+  @include responsive(medium) {
+    padding-top: 7rem;
+  }
+
+  @include responsive(small) {
+    padding-top: 5rem;
+  }
+
+  &__slogan {
+    font-family: $font-thrid;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5 rem;
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 2rem;
+
+    &:after {
+      content: "";
+      height: 2px;
+      width: 7rem;
+      background-color: $color-secondary;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      // padding-bottom: 4rem;
+    }
+  }
+
+  &__desc {
+    font-size: 1.5rem;
+    color: $color-light-dark;
+    max-width: 70%;
+    margin: 4rem auto 0;
+
+    @include responsive(medium) {
+      max-width: 80%;
+    }
+  }
+}
+
+.heading-4 {
+  font-family: $font-secondary;
+  color: $color-dark;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+// ---------------HEADER ---------------- //
+.header {
+  background-image: linear-gradient(
+      rgba($color-gradient-pink, 0.8),
+      rgba($color-gradient-yellow, 0.8)
+    ),
+    url("../img/hero-image.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100rem;
+  padding-top: 3rem;
+  position: relative;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__logo {
+    width: 8rem;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      &:not(:last-child) {
+        margin-right: 3rem;
+      }
+
+      @include responsive(medium) {
+        &:not(:last-child) {
+          margin-right: 2rem;
+        }
+      }
+      @include responsive(small) {
+        &:not(:last-child) {
+          margin-right: 1.5rem;
+        }
+      }
+    }
+
+    &__link {
+      &:link,
+      &:visited {
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        padding-bottom: 1rem;
+        outline: none;
+        transition: all 0.2s;
+        font-weight: 400;
+      }
+
+      &:hover,
+      &:active {
+        color: $color-gradient-yellow;
+        border-bottom: 1px solid currentColor;
+      }
+    }
+    &__icon {
+      width: 1.5rem;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    color: #fff;
+    text-align: center;
+  }
+
+  &__slogan {
+    font-family: $font-thrid;
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 2;
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    font-size: 12rem;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .slide {
+    padding-top: 85rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__item {
+      padding-top: 2rem;
+      border-top: 2px solid #fff;
+      width: calc((100% - 9rem) / 4);
+      opacity: 0.75;
+      position: relative;
+      color: #fff;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: 0;
+        width: 100px;
+        height: 2px;
+        background-color: transparent;
+      }
+
+      // when the element have both class i want to modify the &__item
+      &.is-active {
+        opacity: 1;
+        // when the element have both class i want to modify the &__item:before
+        &:before {
+          background-color: $color-secondary;
+        }
+      }
+
+      &-num {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      &-text {
+        text-transform: uppercase;
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+// ---------------ABOUT ---------------- //
+.about {
+  &__list {
+    padding: 10rem 0;
+
+    @include responsive(medium) {
+      padding: 7rem 0rem;
+    }
+
+    @include responsive(small) {
+      padding: 5rem 0rem;
+    }
+  }
+
+  &__item {
+    position: relative;
+    transition: transform 0.2s linear;
+
+    &:after {
+      content: "";
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: $color-primary;
+      z-index: -1;
+      transition: transform 0.2s linear;
+    }
+
+    &:hover {
+      transform: translate(10px, 10px);
+
+      &:after {
+        transform: translate(-10px, -10px);
+      }
+
+      .super-team {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  &__img {
+  }
+}
+
+.super-team {
+  background-image: linear-gradient(
+    rgba($color-gradient-pink, 0.9),
+    rgba($color-gradient-yellow, 0.9)
+  );
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+
+  &-icon {
+    width: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-text {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: bold;
+    font-family: $font-secondary;
+    color: #fff;
+  }
+}
+
+// ---------------SERVICES ---------------- //
+.services {
+  &__list {
+    align-items: start;
+    padding: 8rem 0;
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 2rem;
+    row-gap: 1rem;
+  }
+  &__img {
+    width: 2.5rem;
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2;
+  }
+  &__name {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-family: $font-secondary;
+  }
+  &__text {
+    font-size: 1.1rem;
+    color: $color-light-dark;
+  }
+  &__ {
+  }
+}
+// --------------- COUNT SECTION ---------------- //
+.count {
+  background-color: $color-primary;
+
+  &__list {
+    height: 14vw;
+    text-align: center;
+    color: #fff;
+    font-family: $font-secondary;
+    display: flex;
+  }
+
+  &__item {
+    padding: 1rem;
+    border-left: 1px solid #b5eae0;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:last-child {
+      border-right: 1px solid #b5eae0;
+    }
+  }
+
+  &__number {
+    font-size: 4vw;
+    font-weight: bold;
+  }
+
+  &__text {
+    font-size: 1vw;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+}
+
+// --------------- BRANCH SECTION ---------------- //
+.branch {
+  background-color: #f8f8f8;
+  padding: 5rem 3rem;
+}
+
+// --------------- LOCATION SECTION ---------------- //
+
+.location {
+  &__img {
+    max-height: 25rem;
+  }
+}
+
+// --------------- QUOTE SECTION ---------------- //
+.quote {
+  padding: 7rem 0;
+  background-color: #f8f8f8;
+
+  @include responsive(medium) {
+    padding: 5rem 0;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: $color-light-dark;
+  }
+
+  &__content {
+    padding: 0 5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 1rem;
+  }
+
+  &__img {
+    height: 14.5rem;
+    width: 14.5rem;
+
+    @include responsive(small) {
+      height: 12rem;
+      width: 12rem;
+    }
+
+    &--message {
+      width: 14rem;
+      height: auto;
+      padding: 4rem;
+      border: 1px solid $color-primary;
+
+      @include responsive(small) {
+        width: 12rem;
+      }
+    }
+  }
+
+  &__text {
+    margin-left: 4rem;
+    line-height: 1.6;
+    position: relative;
+
+    @include responsive(small) {
+      margin-left: 3rem;
+    }
+
+    &:before {
+      content: "";
+      height: 2px;
+      width: 5rem;
+      background-color: $color-secondary;
+      position: absolute;
+      transform: translateY(3rem);
+      bottom: 0;
+    }
+
+    &:after {
+      content: "Joshua Egal";
+      font-family: $font-thrid;
+      font-weight: 400;
+      color: $color-dark;
+      font-size: 1.8rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translate(6rem, 3.7rem);
+    }
+  }
+}
+
+// --------------- UNIQUE ---------------- //
+.unique {
+  background-image: url(../img/device-bg-1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 85rem;
+  position: relative;
+
+  @include responsive(medium) {
+    height: 60rem;
+  }
+
+  @include responsive(small) {
+    height: 57rem;
+  }
+
+  &__img {
+    width: 60rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-43%, 13.5%);
+
+    @include responsive(medium) {
+      width: 40rem;
+    }
+  }
+}
+
+// --------------- OUR WORK---------------- //
+.gallery {
+  padding-top: 10rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include responsive(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include responsive(small) {
+    padding-top: 5rem;
+  }
+
+  &__img {
+    &--03 {
+      grid-column: 3 / 4;
+      grid-row: 1 / span 2;
+
+      @include responsive(medium) {
+        grid-row: 1 / span 3;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+//  --------------- COMMENTS---------------- //
+.comments {
+  background-image: url(../img/clients-background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__list {
+    padding: 10rem 0;
+    align-items: flex-start;
+
+    @include responsive(medium) {
+      padding: 7rem 3rem;
+    }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+  }
+
+  &__img {
+    width: auto;
+    height: 7rem;
+    grid-row: span 3;
+  }
+
+  &__name {
+    font-family: $font-secondary;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+
+  &__job {
+    font-style: italic;
+    font-weight: 400;
+    color: $color-light-dark;
+    margin-top: -10px;
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 5rem;
+      background-color: $color-secondary;
+      bottom: 0;
+      display: block;
+    }
+  }
+
+  &__text {
+    color: $color-light-dark;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+}
+
+//  --------------- TEAMS---------------- //
+.teams {
+  &__list {
+    padding: 10rem 0;
+  }
+
+  &__member {
+    text-align: center;
+  }
+  &__container {
+    position: relative;
+    transition: transform 0.2s;
+
+    &:after {
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: $color-primary;
+      top: 0;
+      left: 0;
+      position: absolute;
+      z-index: -1;
+      transition: transform 0.2s;
+    }
+
+    &:hover {
+      transform: translate(1rem, 1rem);
+
+      &:after {
+        transform: translate(-1rem, -1rem);
+      }
+
+      .teams__connect {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  // &__img {
+  //   width: 100%;
+  //   height: 100%;
+  //   object-fit: cover;
+  // }
+
+  &__name {
+    font-family: $font-secondary;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+  }
+
+  &__job {
+    font-style: italic;
+    font-weight: 400;
+    color: $color-light-dark;
+    font-size: 1.4rem;
+  }
+
+  &__connect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+      rgba($color-gradient-pink, 0.9),
+      rgba($color-gradient-yellow, 0.9)
+    );
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s;
+  }
+
+  &__icon {
+    height: 5rem;
+    width: 5rem;
+    padding: 1.5rem;
+    fill: $color-secondary;
+    background-color: $color-gradient-yellow;
+
+    &:not(:last-child) {
+      border-right: 0.5px solid $color-secondary;
+    }
+
+    &:hover {
+      fill: #fff;
+      background-color: $color-secondary;
+    }
+  }
+}
+
+// --------------- WEDO SECTION ---------------- //
+.wedo {
+  &__body {
+    padding: 10rem 0;
+
+    @include responsive(medium) {
+      padding: 7rem 0;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: min-content 1fr min-content;
+    // grid-template-rows: repeat(4, min-content);
+    column-gap: 1.5rem;
+    align-items: center;
+    border: 1px solid #000;
+  }
+
+  &__action {
+    grid-column: 2 / 3;
+    text-transform: uppercase;
+    font-family: $font-secondary;
+    font-weight: bold;
+    color: $color-dark;
+  }
+  &__text {
+    grid-row: 2 / 3;
+    grid-column: 1 / span 3;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: $color-light-dark;
+  }
+  &__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    grid-column: 1 / 2;
+  }
+  &__arrow {
+    grid-column: 3 / 4;
+    width: 2rem;
+  }
+}
+
+// --------------- BLOG ---------------- //
+.blog {
+  &__list {
+    padding: 10rem 0;
+
+    @include responsive(medium) {
+      padding: 7rem 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__celendar {
+    background-color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-20%, -30%);
+    padding: 1rem 1.5rem;
+    color: #fff;
+    font-size: 2rem;
+
+    @include responsive(large) {
+      top: 10%;
+    }
+
+    @include responsive(small) {
+      top: 40%;
+      padding: 2rem;
+    }
+  }
+
+  &__day {
+    font-family: $font-secondary;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 1.5rem;
+
+    @include responsive(small) {
+      font-size: 4.5rem;
+    }
+  }
+
+  &__month {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    @include responsive(small) {
+      font-size: 2rem;
+    }
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0.5rem 0 1rem;
+  }
+
+  &__text {
+    font-weight: 300;
+    color: $color-light-dark;
+    font-size: 1.2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__interactive {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__comments,
+  &__view {
+    display: flex;
+    align-items: center;
+  }
+
+  &__view {
+    margin-right: 1rem;
+  }
+
+  &__icon {
+    width: 1.5rem;
+    display: inline-block;
+
+    margin-right: 0.5rem;
+
+    &-1 {
+      width: 2rem;
+    }
+  }
+}
+
+// --------------- FOOTER ---------------- //
+.footer {
+  padding: 8rem 0 2rem;
+
+  @include responsive(small) {
+    padding-top: 5rem;
+  }
+
+  .subscribe {
+    @include responsive(small) {
+      margin-bottom: 5rem;
+    }
+
+    &__logo {
+      color: $color-light-dark;
+      font-family: $font-secondary;
+      font-size: 5rem;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+
+      @include responsive(medium) {
+        font-size: 3rem;
+      }
+    }
+
+    &__count {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $color-border;
+    }
+
+    &__number {
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    &__followers {
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: $font-secondary;
+    }
+
+    &__text {
+      font-size: 1.1rem;
+      color: $color-light-dark;
+      margin-bottom: 2rem;
+    }
+
+    &__social-connect {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    &__follow-us {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: $color-light-dark;
+    }
+
+    &__icon {
+      height: 1.5rem;
+      width: 1.5rem;
+      margin-left: 3rem;
+      fill: $color-primary;
+    }
+
+    .form {
+      display: flex;
+      margin-top: 2rem;
+
+      &__input {
+        padding: 0.5rem 2rem;
+        width: 70%;
+
+        // box-sizing: content-box;
+        border: 1px solid #eee;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::-webkit-input-placeholder {
+          color: $color-light-dark;
+          font-style: italic;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .btn {
+    outline: none;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: transform 0.2s;
+
+    &--blue {
+      background-color: $color-primary;
+      margin-left: -5px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: darken($color-primary, 10%);
+      }
+    }
+
+    &:active {
+      transform: translateY(3px);
+    }
+  }
+
+  .album {
+    text-align: center;
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(min-content, 9rem));
+      justify-content: center;
+
+      @media only screen and (max-width: 1000px) {
+        grid-template-columns: repeat(3, minmax(min-content, 7rem));
+      }
+
+      @include responsive(small) {
+        grid-template-columns: repeat(3, minmax(min-content, 1fr));
+      }
+    }
+  }
+
+  .posts {
+    @include responsive(small) {
+      margin-bottom: 5rem;
+    }
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      column-gap: 2rem;
+      row-gap: 3rem;
+
+      @include responsive(medium) {
+        row-gap: 1.5rem;
+      }
+    }
+
+    &__img {
+      grid-column: 1/2;
+    }
+
+    &__content {
+      grid-column: 2/4;
+    }
+
+    &__heading {
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    &__day {
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+  }
+
+  .copy-right {
+    margin-top: 6rem;
+    padding-top: 1rem;
+    border-top: 1px solid $color-border;
+    text-align: center;
+    font-size: 1.1rem;
+    color: $color-light-dark;
+  }
+}
