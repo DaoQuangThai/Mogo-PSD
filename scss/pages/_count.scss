@@ -1,0 +1,37 @@
+// --------------- COUNT SECTION ---------------- //
+.count {
+  background-color: $color-primary;
+
+  &__list {
+    height: 14vw;
+    text-align: center;
+    color: #fff;
+    font-family: $font-secondary;
+    display: flex;
+  }
+
+  &__item {
+    padding: 1rem;
+    border-left: 1px solid #b5eae0;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &:last-child {
+      border-right: 1px solid #b5eae0;
+    }
+  }
+
+  &__number {
+    font-size: 4vw;
+    font-weight: bold;
+  }
+
+  &__text {
+    font-size: 1vw;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+}

@@ -1,0 +1,153 @@
+// --------------- FOOTER ---------------- //
+.footer {
+  padding: 8rem 0 2rem;
+
+  @include responsive(small) {
+    padding-top: 5rem;
+  }
+
+  .subscribe {
+    @include responsive(small) {
+      margin-bottom: 5rem;
+    }
+
+    &__logo {
+      color: $color-light-dark;
+      font-family: $font-secondary;
+      font-size: 5rem;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+
+      @include responsive(medium) {
+        font-size: 3rem;
+      }
+    }
+
+    &__count {
+      padding-bottom: 1rem;
+      border-bottom: 1px solid $color-border;
+    }
+
+    &__number {
+      font-family: $font-secondary;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    &__followers {
+      font-size: 1rem;
+      font-weight: 400;
+      font-family: $font-secondary;
+    }
+
+    &__text {
+      font-size: 1.1rem;
+      color: $color-light-dark;
+      margin-bottom: 2rem;
+    }
+
+    &__social-connect {
+      display: flex;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    &__follow-us {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: $color-light-dark;
+    }
+
+    &__icon {
+      height: 1.5rem;
+      width: 1.5rem;
+      margin-left: 3rem;
+      fill: $color-primary;
+    }
+
+    .form {
+      display: flex;
+      margin-top: 2rem;
+
+      &__input {
+        padding: 0.5rem 2rem;
+        width: 70%;
+
+        // box-sizing: content-box;
+        border: 1px solid #eee;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::-webkit-input-placeholder {
+          color: $color-light-dark;
+          font-style: italic;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  .album {
+    text-align: center;
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(min-content, 9rem));
+      justify-content: center;
+
+      @media only screen and (max-width: 1000px) {
+        grid-template-columns: repeat(3, minmax(min-content, 7rem));
+      }
+
+      @include responsive(small) {
+        grid-template-columns: repeat(3, minmax(min-content, 1fr));
+      }
+    }
+  }
+
+  .posts {
+    @include responsive(small) {
+      margin-bottom: 5rem;
+    }
+
+    &__container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      column-gap: 2rem;
+      row-gap: 3rem;
+
+      @include responsive(medium) {
+        row-gap: 1.5rem;
+      }
+    }
+
+    &__img {
+      grid-column: 1/2;
+    }
+
+    &__content {
+      grid-column: 2/4;
+    }
+
+    &__heading {
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+    &__day {
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+  }
+
+  .copy-right {
+    margin-top: 6rem;
+    padding-top: 1rem;
+    border-top: 1px solid $color-border;
+    text-align: center;
+    font-size: 1.1rem;
+    color: $color-light-dark;
+  }
+}

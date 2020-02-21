@@ -1,0 +1,59 @@
+.heading {
+  text-align: center;
+  padding-top: 10rem;
+
+  @include responsive(medium) {
+    padding-top: 7rem;
+  }
+
+  @include responsive(small) {
+    padding-top: 5rem;
+  }
+
+  &__slogan {
+    font-family: $font-thrid;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5 rem;
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 2rem;
+
+    &:after {
+      content: "";
+      height: 2px;
+      width: 7rem;
+      background-color: $color-secondary;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      // padding-bottom: 4rem;
+    }
+  }
+
+  &__desc {
+    font-size: 1.5rem;
+    color: $color-light-dark;
+    max-width: 70%;
+    margin: 4rem auto 0;
+
+    @include responsive(medium) {
+      max-width: 80%;
+    }
+  }
+}
+
+.heading-4 {
+  font-family: $font-secondary;
+  color: $color-dark;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}

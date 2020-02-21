@@ -1,0 +1,29 @@
+// --------------- UNIQUE ---------------- //
+.unique {
+  background-image: url(../img/device-bg-1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 85rem;
+  position: relative;
+
+  @include responsive(medium) {
+    height: 60rem;
+  }
+
+  @include responsive(small) {
+    height: 57rem;
+  }
+
+  &__img {
+    width: 60rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-43%, 13.5%);
+
+    @include responsive(medium) {
+      width: 40rem;
+    }
+  }
+}

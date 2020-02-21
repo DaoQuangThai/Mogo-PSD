@@ -1,0 +1,61 @@
+// --------------- OVERALL LAYOUT ---------------- //
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 0 3rem;
+}
+
+// FLEX LAYOUT
+.flex-items-container {
+  display: flex;
+  justify-content: space-between;
+
+  @include responsive(small) {
+    flex-direction: column;
+  }
+}
+
+.flex-1-of-2 {
+  width: calc((100% - 3rem) / 2);
+
+  @include responsive(small) {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 5rem;
+    }
+  }
+}
+
+.flex-1-of-3 {
+  width: calc((100% - 6rem) / 3);
+
+  @include responsive(small) {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+// GRID LAYOUT
+.grid-1-of-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
+  gap: 6rem;
+
+  @include responsive(medium) {
+    gap: 4rem;
+  }
+}
+
+.grid-1-of-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 6rem;
+
+  @include responsive(medium) {
+    gap: 4rem;
+  }
+}

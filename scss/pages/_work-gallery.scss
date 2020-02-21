@@ -1,0 +1,28 @@
+// --------------- OUR WORK---------------- //
+.gallery {
+  padding-top: 10rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include responsive(medium) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include responsive(small) {
+    padding-top: 5rem;
+  }
+
+  &__img {
+    &--03 {
+      grid-column: 3 / 4;
+      grid-row: 1 / span 2;
+
+      @include responsive(medium) {
+        grid-row: 1 / span 3;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}

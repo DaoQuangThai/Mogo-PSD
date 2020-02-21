@@ -1,0 +1,80 @@
+.quote {
+  padding: 7rem 0;
+  background-color: #f8f8f8;
+
+  @include responsive(medium) {
+    padding: 5rem 0;
+  }
+
+  &__box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: $color-light-dark;
+  }
+
+  &__content {
+    padding: 0 5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 1rem;
+  }
+
+  &__img {
+    height: 14.5rem;
+    width: 14.5rem;
+
+    @include responsive(small) {
+      height: 12rem;
+      width: 12rem;
+    }
+
+    &--message {
+      width: 14rem;
+      height: auto;
+      padding: 4rem;
+      border: 1px solid $color-primary;
+
+      @include responsive(small) {
+        width: 12rem;
+      }
+    }
+  }
+
+  &__text {
+    margin-left: 4rem;
+    line-height: 1.6;
+    position: relative;
+
+    @include responsive(small) {
+      margin-left: 3rem;
+    }
+
+    &:before {
+      content: "";
+      height: 2px;
+      width: 5rem;
+      background-color: $color-secondary;
+      position: absolute;
+      transform: translateY(3rem);
+      bottom: 0;
+    }
+
+    &:after {
+      content: "Joshua Egal";
+      font-family: $font-thrid;
+      font-weight: 400;
+      color: $color-dark;
+      font-size: 1.8rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: translate(6rem, 3.7rem);
+    }
+  }
+}

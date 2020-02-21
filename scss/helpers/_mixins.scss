@@ -1,0 +1,40 @@
+// --------------- MEDIA QUERY MANAGER ---------------- //
+/*
+Break point: 
+- small: 600px
+- medium: 900px
+- large: 1200px
+- retina: mac user
+*/
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == small {
+    @media only screen and (max-width: 600px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == medium {
+    @media only screen and (max-width: 900px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == large {
+    @media only screen and (max-width: 1200px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == largest {
+    @media only screen and (min-width: 1920px) {
+      @content;
+    }
+  }
+
+  // @if $breakpoint == retina {
+  //   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  //     @content;
+  //   }
+  // }
+}

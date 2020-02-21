@@ -1,0 +1,29 @@
+// ---------------SERVICES ---------------- //
+.services {
+  &__list {
+    align-items: start;
+    padding: 8rem 0;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 2rem;
+    row-gap: 1rem;
+  }
+
+  &__img {
+    width: 2.5rem;
+    grid-column: 1 / 2;
+    grid-row: 1 / span 2;
+  }
+  &__name {
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-family: $font-secondary;
+  }
+  &__text {
+    font-size: 1.1rem;
+    color: $color-light-dark;
+  }
+}

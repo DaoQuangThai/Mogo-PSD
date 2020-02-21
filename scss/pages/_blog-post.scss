@@ -1,0 +1,98 @@
+// --------------- BLOG ---------------- //
+.blog {
+  &__list {
+    padding: 10rem 0;
+
+    @include responsive(medium) {
+      padding: 7rem 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__celendar {
+    background-color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(-20%, -30%);
+    padding: 1rem 1.5rem;
+    color: #fff;
+    font-size: 2rem;
+
+    @include responsive(large) {
+      top: 10%;
+    }
+
+    @include responsive(small) {
+      top: 40%;
+      padding: 2rem;
+    }
+  }
+
+  &__day {
+    font-family: $font-secondary;
+    font-weight: bold;
+    line-height: 1;
+    font-size: 1.5rem;
+
+    @include responsive(small) {
+      font-size: 4.5rem;
+    }
+  }
+
+  &__month {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    @include responsive(small) {
+      font-size: 2rem;
+    }
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin: 0.5rem 0 1rem;
+  }
+
+  &__text {
+    font-weight: 300;
+    color: $color-light-dark;
+    font-size: 1.2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__interactive {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__comments,
+  &__view {
+    display: flex;
+    align-items: center;
+  }
+
+  &__view {
+    margin-right: 1rem;
+  }
+
+  &__icon {
+    width: 1.5rem;
+    display: inline-block;
+
+    margin-right: 0.5rem;
+
+    &-1 {
+      width: 2rem;
+    }
+  }
+}

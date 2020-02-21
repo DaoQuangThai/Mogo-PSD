@@ -1,0 +1,62 @@
+//  --------------- COMMENTS---------------- //
+.comments {
+  background-image: url(../img/clients-background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &__list {
+    padding: 10rem 0;
+    align-items: flex-start;
+
+    @include responsive(medium) {
+      padding: 7rem 3rem;
+    }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    column-gap: 2.5rem;
+    row-gap: 1rem;
+  }
+
+  &__img {
+    width: auto;
+    height: 7rem;
+    grid-row: span 3;
+  }
+
+  &__name {
+    font-family: $font-secondary;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.4rem;
+  }
+
+  &__job {
+    font-style: italic;
+    font-weight: 400;
+    color: $color-light-dark;
+    margin-top: -10px;
+    position: relative;
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      width: 5rem;
+      background-color: $color-secondary;
+      bottom: 0;
+      display: block;
+    }
+  }
+
+  &__text {
+    color: $color-light-dark;
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+}
